@@ -8,48 +8,72 @@
     <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
     <style>
         body {
-            background-color: #f5f5f5;
+            background-color: #f6f6f6;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         .header {
             background: white;
-            padding: 16px;
+            padding: 16px 20px;
             position: sticky;
             top: 0;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .banner {
-            height: 160px;
-            background: #0052d9;
+            height: 180px;
+            background: linear-gradient(135deg, #0052d9, #1a7fff);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
+            opacity: 0.1;
         }
         .categories {
             background: white;
-            padding: 16px;
+            padding: 20px;
             overflow-x: auto;
+            margin-top: -20px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            z-index: 1;
         }
         .category-list {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             padding-bottom: 8px;
         }
         .category-item {
-            padding: 8px 16px;
-            border-radius: 16px;
+            padding: 10px 20px;
+            border-radius: 20px;
             white-space: nowrap;
             cursor: pointer;
+            transition: all 0.2s;
+            background: #f6f6f6;
+            color: #666;
         }
         .category-item.active {
             background: #0052d9;
             color: white;
+            box-shadow: 0 4px 12px rgba(0,82,217,0.2);
         }
         .content {
-            padding: 16px;
+            padding: 20px;
+            margin-bottom: 80px;
         }
         .product-grid {
             display: grid;
@@ -58,15 +82,30 @@
         }
         .product-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .product-card:active {
+            transform: scale(0.98);
         }
         .product-image {
             aspect-ratio: 1;
-            background: #f5f5f5;
-            border-radius: 8px;
-            margin-bottom: 8px;
+            background: #f6f6f6;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,82,217,0.1), rgba(26,127,255,0.1));
         }
         .nav-bar {
             position: fixed;
@@ -75,14 +114,34 @@
             right: 0;
             background: white;
             border-top: 1px solid #e7e7e7;
-            padding: 8px 0;
+            padding: 12px 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .nav-item {
             text-align: center;
-            color: #999;
+            color: #666;
+            transition: color 0.2s;
         }
         .nav-item.active {
             color: #0052d9;
+        }
+        .price-tag {
+            background: rgba(227,77,89,0.1);
+            padding: 4px 8px;
+            border-radius: 8px;
+            color: #e34d59;
+        }
+        .buy-button {
+            background: linear-gradient(135deg, #0052d9, #1a7fff);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: transform 0.2s;
+        }
+        .buy-button:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -93,6 +152,7 @@
             placeholder="搜索商品"
             prefixIcon="search"
             clearable
+            shape="round"
         />
     </div>
 
@@ -100,7 +160,8 @@
     <div class="banner">
         <t-space direction="vertical" align="center">
             <t-text size="large" weight="bold">满3瓶免配送费</t-text>
-            <t-text size="small">限时优惠活动</t-text>
+            <t-text size="small" opacity="0.9">限时优惠活动</t-text>
+            <t-button theme="light" size="small" shape="round">立即查看</t-button>
         </t-space>
     </div>
 
@@ -110,6 +171,7 @@
             <div class="category-item active">燃气瓶</div>
             <div class="category-item">配件</div>
             <div class="category-item">安全设备</div>
+            <div class="category-item">优惠套餐</div>
         </div>
     </div>
 
@@ -123,8 +185,10 @@
                     <t-text weight="medium">15kg 燃气瓶</t-text>
                     <t-text size="small" theme="default" variant="text">标准规格</t-text>
                     <t-space justify="space-between" align="center">
-                        <t-text theme="danger" weight="bold">¥120</t-text>
-                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                        <div class="price-tag">
+                            <t-text theme="danger" weight="bold">¥120</t-text>
+                        </div>
+                        <button class="buy-button">立即订购</button>
                     </t-space>
                 </t-space>
             </div>
@@ -136,8 +200,10 @@
                     <t-text weight="medium">5kg 燃气瓶</t-text>
                     <t-text size="small" theme="default" variant="text">便携规格</t-text>
                     <t-space justify="space-between" align="center">
-                        <t-text theme="danger" weight="bold">¥80</t-text>
-                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                        <div class="price-tag">
+                            <t-text theme="danger" weight="bold">¥80</t-text>
+                        </div>
+                        <button class="buy-button">立即订购</button>
                     </t-space>
                 </t-space>
             </div>
@@ -149,8 +215,10 @@
                     <t-text weight="medium">燃气报警器</t-text>
                     <t-text size="small" theme="default" variant="text">安全防护</t-text>
                     <t-space justify="space-between" align="center">
-                        <t-text theme="danger" weight="bold">¥199</t-text>
-                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                        <div class="price-tag">
+                            <t-text theme="danger" weight="bold">¥199</t-text>
+                        </div>
+                        <button class="buy-button">立即订购</button>
                     </t-space>
                 </t-space>
             </div>
@@ -162,8 +230,10 @@
                     <t-text weight="medium">减压阀</t-text>
                     <t-text size="small" theme="default" variant="text">标准配件</t-text>
                     <t-space justify="space-between" align="center">
-                        <t-text theme="danger" weight="bold">¥45</t-text>
-                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                        <div class="price-tag">
+                            <t-text theme="danger" weight="bold">¥45</t-text>
+                        </div>
+                        <button class="buy-button">立即订购</button>
                     </t-space>
                 </t-space>
             </div>

@@ -8,38 +8,46 @@
     <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
     <style>
         body {
-            background-color: #f5f5f5;
+            background-color: #f6f6f6;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         .header {
-            background: white;
-            padding: 16px;
+            background: linear-gradient(135deg, #0052d9, #1a7fff);
+            color: white;
+            padding: 24px 20px;
             position: sticky;
             top: 0;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,82,217,0.15);
         }
         .content {
-            padding: 16px;
+            padding: 20px;
+            margin-top: -20px;
+            margin-bottom: 80px;
         }
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 20px;
             margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:active {
+            transform: scale(0.98);
         }
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         .score-card {
-            background: #f5f5f5;
-            border-radius: 8px;
-            padding: 16px;
+            background: linear-gradient(135deg, rgba(0,82,217,0.05), rgba(26,127,255,0.05));
+            border-radius: 12px;
+            padding: 20px;
         }
         .nav-bar {
             position: fixed;
@@ -48,14 +56,65 @@
             right: 0;
             background: white;
             border-top: 1px solid #e7e7e7;
-            padding: 8px 0;
+            padding: 12px 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .nav-item {
             text-align: center;
-            color: #999;
+            color: #666;
+            transition: color 0.2s;
         }
         .nav-item.active {
             color: #0052d9;
+        }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+        .service-icon.primary {
+            background: rgba(0,82,217,0.1);
+        }
+        .service-icon.success {
+            background: rgba(0,180,42,0.1);
+        }
+        .faq-item {
+            padding: 16px;
+            border-radius: 12px;
+            background: #f6f6f6;
+            margin-bottom: 12px;
+            transition: background-color 0.2s;
+        }
+        .faq-item:active {
+            background: #e6e6e6;
+        }
+        .upload-button {
+            background: linear-gradient(135deg, #0052d9, #1a7fff);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        .upload-button:active {
+            transform: scale(0.98);
+        }
+        .consult-button {
+            background: linear-gradient(135deg, #00b42a, #00d42a);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: transform 0.2s;
+        }
+        .consult-button:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -74,9 +133,11 @@
                 <t-link theme="primary" size="small">查看详情</t-link>
             </div>
             <div class="score-card">
-                <t-space justify="space-between" align="center" style="margin-bottom: 12px;">
+                <t-space justify="space-between" align="center" style="margin-bottom: 16px;">
                     <t-space align="center">
-                        <t-avatar icon="shield" theme="primary" />
+                        <div class="service-icon primary">
+                            <t-icon name="shield" size="large" theme="primary" />
+                        </div>
                         <t-space direction="vertical" size="small">
                             <t-text weight="medium">安全评分</t-text>
                             <t-text size="small" theme="default" variant="text">上次检查：2024-03-15</t-text>
@@ -87,7 +148,7 @@
                         <t-text size="small" theme="default" variant="text">分</t-text>
                     </t-space>
                 </t-space>
-                <t-button theme="primary" block>上传照片进行安检</t-button>
+                <button class="upload-button">上传照片进行安检</button>
             </div>
         </div>
 
@@ -95,34 +156,40 @@
         <div class="card">
             <t-space justify="space-between" align="center">
                 <t-space align="center">
-                    <t-avatar icon="service" theme="success" />
+                    <div class="service-icon success">
+                        <t-icon name="service" size="large" theme="success" />
+                    </div>
                     <t-space direction="vertical" size="small">
                         <t-text weight="medium">在线客服</t-text>
                         <t-text size="small" theme="default" variant="text">工作时间：9:00-21:00</t-text>
                     </t-space>
                 </t-space>
-                <t-button theme="success" size="small">立即咨询</t-button>
+                <button class="consult-button">立即咨询</button>
             </t-space>
         </div>
 
         <!-- 常见问题 -->
         <div class="card">
-            <t-text size="large" weight="medium" style="margin-bottom: 16px;">常见问题</t-text>
+            <t-text size="large" weight="medium" style="margin-bottom: 20px;">常见问题</t-text>
             <t-space direction="vertical" size="large">
-                <t-space direction="vertical" size="small">
-                    <t-text weight="medium">如何更换燃气瓶？</t-text>
-                    <t-text size="small" theme="default" variant="text">在首页点击"燃气配送"，选择需要的规格即可下单...</t-text>
-                </t-space>
-                <t-divider />
-                <t-space direction="vertical" size="small">
-                    <t-text weight="medium">燃气泄漏怎么办？</t-text>
-                    <t-text size="small" theme="default" variant="text">立即关闭总阀，打开门窗通风，点击首页右下角"应急处理"...</t-text>
-                </t-space>
-                <t-divider />
-                <t-space direction="vertical" size="small">
-                    <t-text weight="medium">如何预约安检？</t-text>
-                    <t-text size="small" theme="default" variant="text">在首页点击"上门安检"，选择合适的时间段预约...</t-text>
-                </t-space>
+                <div class="faq-item">
+                    <t-space direction="vertical" size="small">
+                        <t-text weight="medium">如何更换燃气瓶？</t-text>
+                        <t-text size="small" theme="default" variant="text">在首页点击"燃气配送"，选择需要的规格即可下单...</t-text>
+                    </t-space>
+                </div>
+                <div class="faq-item">
+                    <t-space direction="vertical" size="small">
+                        <t-text weight="medium">燃气泄漏怎么办？</t-text>
+                        <t-text size="small" theme="default" variant="text">立即关闭总阀，打开门窗通风，点击首页右下角"应急处理"...</t-text>
+                    </t-space>
+                </div>
+                <div class="faq-item">
+                    <t-space direction="vertical" size="small">
+                        <t-text weight="medium">如何预约安检？</t-text>
+                        <t-text size="small" theme="default" variant="text">在首页点击"上门安检"，选择合适的时间段预约...</t-text>
+                    </t-space>
+                </div>
             </t-space>
         </div>
     </div>
