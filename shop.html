@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商城 - 燃气服务</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: white;
+            padding: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .banner {
+            height: 160px;
+            background: #0052d9;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .categories {
+            background: white;
+            padding: 16px;
+            overflow-x: auto;
+        }
+        .category-list {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 8px;
+        }
+        .category-item {
+            padding: 8px 16px;
+            border-radius: 16px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .category-item.active {
+            background: #0052d9;
+            color: white;
+        }
+        .content {
+            padding: 16px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .product-image {
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e7e7e7;
+            padding: 8px 0;
+        }
+        .nav-item {
+            text-align: center;
+            color: #999;
+        }
+        .nav-item.active {
+            color: #0052d9;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部搜索栏 -->
+    <div class="header">
+        <t-input
+            placeholder="搜索商品"
+            prefixIcon="search"
+            clearable
+        />
+    </div>
+
+    <!-- 轮播图 -->
+    <div class="banner">
+        <t-space direction="vertical" align="center">
+            <t-text size="large" weight="bold">满3瓶免配送费</t-text>
+            <t-text size="small">限时优惠活动</t-text>
+        </t-space>
+    </div>
+
+    <!-- 分类标签 -->
+    <div class="categories">
+        <div class="category-list">
+            <div class="category-item active">燃气瓶</div>
+            <div class="category-item">配件</div>
+            <div class="category-item">安全设备</div>
+        </div>
+    </div>
+
+    <!-- 商品列表 -->
+    <div class="content">
+        <div class="product-grid">
+            <!-- 商品卡片 1 -->
+            <div class="product-card">
+                <div class="product-image"></div>
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">15kg 燃气瓶</t-text>
+                    <t-text size="small" theme="default" variant="text">标准规格</t-text>
+                    <t-space justify="space-between" align="center">
+                        <t-text theme="danger" weight="bold">¥120</t-text>
+                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                    </t-space>
+                </t-space>
+            </div>
+
+            <!-- 商品卡片 2 -->
+            <div class="product-card">
+                <div class="product-image"></div>
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">5kg 燃气瓶</t-text>
+                    <t-text size="small" theme="default" variant="text">便携规格</t-text>
+                    <t-space justify="space-between" align="center">
+                        <t-text theme="danger" weight="bold">¥80</t-text>
+                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                    </t-space>
+                </t-space>
+            </div>
+
+            <!-- 商品卡片 3 -->
+            <div class="product-card">
+                <div class="product-image"></div>
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">燃气报警器</t-text>
+                    <t-text size="small" theme="default" variant="text">安全防护</t-text>
+                    <t-space justify="space-between" align="center">
+                        <t-text theme="danger" weight="bold">¥199</t-text>
+                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                    </t-space>
+                </t-space>
+            </div>
+
+            <!-- 商品卡片 4 -->
+            <div class="product-card">
+                <div class="product-image"></div>
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">减压阀</t-text>
+                    <t-text size="small" theme="default" variant="text">标准配件</t-text>
+                    <t-space justify="space-between" align="center">
+                        <t-text theme="danger" weight="bold">¥45</t-text>
+                        <t-button theme="primary" size="small" variant="base">立即订购</t-button>
+                    </t-space>
+                </t-space>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <t-space justify="space-around">
+            <div class="nav-item">
+                <t-icon name="home" size="large" />
+                <t-text size="small">首页</t-text>
+            </div>
+            <div class="nav-item active">
+                <t-icon name="cart" size="large" />
+                <t-text size="small">商城</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="service" size="large" />
+                <t-text size="small">服务</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="user" size="large" />
+                <t-text size="small">我的</t-text>
+            </div>
+        </t-space>
+    </div>
+</body>
+</html> 

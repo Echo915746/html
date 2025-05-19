@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 燃气服务</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0052d9;
+            color: white;
+            padding: 16px;
+        }
+        .content {
+            padding: 16px;
+        }
+        .main-button {
+            background: linear-gradient(to right, #0052d9, #0052d9);
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,82,217,0.2);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e7e7e7;
+            padding: 8px 0;
+        }
+        .nav-item {
+            text-align: center;
+            color: #999;
+        }
+        .nav-item.active {
+            color: #0052d9;
+        }
+        .emergency-button {
+            position: fixed;
+            bottom: 80px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background: #e34d59;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(227,77,89,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部气瓶余量提醒 -->
+    <div class="header">
+        <t-space direction="vertical" size="small">
+            <t-text>气瓶余量</t-text>
+            <t-progress percentage="33" color="#fff" />
+            <t-text>预计剩余 5 天</t-text>
+        </t-space>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="content">
+        <!-- 燃气配送主按钮 -->
+        <div class="main-button">
+            <t-space justify="space-between" align="center">
+                <t-space direction="vertical" size="small">
+                    <t-text size="large" weight="bold">燃气配送</t-text>
+                    <t-text size="small" opacity="0.9">快速配送，安全到家</t-text>
+                </t-space>
+                <t-icon name="gas-pump" size="large" />
+            </t-space>
+        </div>
+
+        <!-- 功能网格 -->
+        <div class="grid">
+            <!-- 燃气知识 -->
+            <div class="card">
+                <t-space direction="vertical" size="small">
+                    <t-icon name="book" size="large" theme="primary" />
+                    <t-text weight="medium">燃气知识</t-text>
+                    <t-text size="small" theme="default" variant="text">安全使用指南</t-text>
+                </t-space>
+            </div>
+
+            <!-- 上门安检 -->
+            <div class="card">
+                <t-space direction="vertical" size="small">
+                    <t-icon name="shield" size="large" theme="success" />
+                    <t-text weight="medium">上门安检</t-text>
+                    <t-text size="small" theme="default" variant="text">专业安全检查</t-text>
+                </t-space>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <t-space justify="space-around">
+            <div class="nav-item active">
+                <t-icon name="home" size="large" />
+                <t-text size="small">首页</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="cart" size="large" />
+                <t-text size="small">商城</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="service" size="large" />
+                <t-text size="small">服务</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="user" size="large" />
+                <t-text size="small">我的</t-text>
+            </div>
+        </t-space>
+    </div>
+
+    <!-- 应急处理悬浮按钮 -->
+    <div class="emergency-button">
+        <t-icon name="warning" size="large" />
+    </div>
+</body>
+</html> 

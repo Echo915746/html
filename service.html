@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务中心 - 燃气服务</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: white;
+            padding: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .content {
+            padding: 16px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .score-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e7e7e7;
+            padding: 8px 0;
+        }
+        .nav-item {
+            text-align: center;
+            color: #999;
+        }
+        .nav-item.active {
+            color: #0052d9;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题 -->
+    <div class="header">
+        <t-text size="large" weight="bold" align="center">服务中心</t-text>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="content">
+        <!-- 智能安检报告 -->
+        <div class="card">
+            <div class="card-header">
+                <t-text size="large" weight="medium">智能安检报告</t-text>
+                <t-link theme="primary" size="small">查看详情</t-link>
+            </div>
+            <div class="score-card">
+                <t-space justify="space-between" align="center" style="margin-bottom: 12px;">
+                    <t-space align="center">
+                        <t-avatar icon="shield" theme="primary" />
+                        <t-space direction="vertical" size="small">
+                            <t-text weight="medium">安全评分</t-text>
+                            <t-text size="small" theme="default" variant="text">上次检查：2024-03-15</t-text>
+                        </t-space>
+                    </t-space>
+                    <t-space>
+                        <t-text size="large" weight="bold" theme="success">95</t-text>
+                        <t-text size="small" theme="default" variant="text">分</t-text>
+                    </t-space>
+                </t-space>
+                <t-button theme="primary" block>上传照片进行安检</t-button>
+            </div>
+        </div>
+
+        <!-- 客服入口 -->
+        <div class="card">
+            <t-space justify="space-between" align="center">
+                <t-space align="center">
+                    <t-avatar icon="service" theme="success" />
+                    <t-space direction="vertical" size="small">
+                        <t-text weight="medium">在线客服</t-text>
+                        <t-text size="small" theme="default" variant="text">工作时间：9:00-21:00</t-text>
+                    </t-space>
+                </t-space>
+                <t-button theme="success" size="small">立即咨询</t-button>
+            </t-space>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="card">
+            <t-text size="large" weight="medium" style="margin-bottom: 16px;">常见问题</t-text>
+            <t-space direction="vertical" size="large">
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">如何更换燃气瓶？</t-text>
+                    <t-text size="small" theme="default" variant="text">在首页点击"燃气配送"，选择需要的规格即可下单...</t-text>
+                </t-space>
+                <t-divider />
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">燃气泄漏怎么办？</t-text>
+                    <t-text size="small" theme="default" variant="text">立即关闭总阀，打开门窗通风，点击首页右下角"应急处理"...</t-text>
+                </t-space>
+                <t-divider />
+                <t-space direction="vertical" size="small">
+                    <t-text weight="medium">如何预约安检？</t-text>
+                    <t-text size="small" theme="default" variant="text">在首页点击"上门安检"，选择合适的时间段预约...</t-text>
+                </t-space>
+            </t-space>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <t-space justify="space-around">
+            <div class="nav-item">
+                <t-icon name="home" size="large" />
+                <t-text size="small">首页</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="cart" size="large" />
+                <t-text size="small">商城</t-text>
+            </div>
+            <div class="nav-item active">
+                <t-icon name="service" size="large" />
+                <t-text size="small">服务</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="user" size="large" />
+                <t-text size="small">我的</t-text>
+            </div>
+        </t-space>
+    </div>
+</body>
+</html> 

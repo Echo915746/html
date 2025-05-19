@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>燃气服务原型</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
+    <style>
+        .device-frame {
+            width: 390px; /* iPhone 15 Pro 宽度 */
+            height: 844px; /* iPhone 15 Pro 高度 */
+            border-radius: 55px;
+            padding: 20px;
+            background: #000;
+            position: relative;
+            margin: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .device-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">燃气服务原型界面</h1>
+        
+        <div class="device-grid">
+            <!-- 首页 -->
+            <div class="device-frame">
+                <div class="screen">
+                    <iframe src="home.html" title="首页"></iframe>
+                </div>
+            </div>
+
+            <!-- 商城 -->
+            <div class="device-frame">
+                <div class="screen">
+                    <iframe src="shop.html" title="商城"></iframe>
+                </div>
+            </div>
+
+            <!-- 服务中心 -->
+            <div class="device-frame">
+                <div class="screen">
+                    <iframe src="service.html" title="服务中心"></iframe>
+                </div>
+            </div>
+
+            <!-- 个人中心 -->
+            <div class="device-frame">
+                <div class="screen">
+                    <iframe src="profile.html" title="个人中心"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

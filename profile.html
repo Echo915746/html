@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 燃气服务</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tdesign-cdn/0.41.1/tdesign.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: #0052d9;
+            color: white;
+            padding: 24px;
+        }
+        .content {
+            padding: 16px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .item-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e7e7e7;
+            padding: 8px 0;
+        }
+        .nav-item {
+            text-align: center;
+            color: #999;
+        }
+        .nav-item.active {
+            color: #0052d9;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部用户信息 -->
+    <div class="header">
+        <t-space align="center">
+            <t-avatar size="large" icon="user" />
+            <t-space direction="vertical" size="small">
+                <t-text size="large" weight="bold">张先生</t-text>
+                <t-text size="small" opacity="0.9">138****8888</t-text>
+            </t-space>
+        </t-space>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="content">
+        <!-- 气瓶管理 -->
+        <div class="card">
+            <div class="card-header">
+                <t-text size="large" weight="medium">我的气瓶</t-text>
+                <t-link theme="primary" size="small">管理</t-link>
+            </div>
+            <t-space direction="vertical" size="small">
+                <div class="item-card">
+                    <t-space justify="space-between" align="center">
+                        <t-space direction="vertical" size="small">
+                            <t-text weight="medium">15kg 燃气瓶</t-text>
+                            <t-text size="small" theme="default" variant="text">ID: 88888888</t-text>
+                        </t-space>
+                        <t-tag theme="success">使用中</t-tag>
+                    </t-space>
+                </div>
+                <div class="item-card">
+                    <t-space justify="space-between" align="center">
+                        <t-space direction="vertical" size="small">
+                            <t-text weight="medium">5kg 燃气瓶</t-text>
+                            <t-text size="small" theme="default" variant="text">ID: 66666666</t-text>
+                        </t-space>
+                        <t-tag theme="default">备用</t-tag>
+                    </t-space>
+                </div>
+            </t-space>
+        </div>
+
+        <!-- 地址管理 -->
+        <div class="card">
+            <div class="card-header">
+                <t-text size="large" weight="medium">配送地址</t-text>
+                <t-link theme="primary" size="small">管理</t-link>
+            </div>
+            <t-space direction="vertical" size="small">
+                <div class="item-card">
+                    <t-space direction="vertical" size="small">
+                        <t-space justify="space-between" align="center">
+                            <t-text weight="medium">家庭地址</t-text>
+                            <t-tag theme="primary">默认</t-tag>
+                        </t-space>
+                        <t-text size="small" theme="default" variant="text">北京市朝阳区建国路88号</t-text>
+                    </t-space>
+                </div>
+                <div class="item-card">
+                    <t-space direction="vertical" size="small">
+                        <t-space justify="space-between" align="center">
+                            <t-text weight="medium">公司地址</t-text>
+                        </t-space>
+                        <t-text size="small" theme="default" variant="text">北京市海淀区中关村大街1号</t-text>
+                    </t-space>
+                </div>
+            </t-space>
+        </div>
+
+        <!-- 其他功能 -->
+        <div class="card">
+            <t-space direction="vertical" size="large">
+                <t-space justify="space-between" align="center">
+                    <t-space align="center">
+                        <t-icon name="id-card" theme="primary" />
+                        <t-text>身份证号</t-text>
+                    </t-space>
+                    <t-text theme="default" variant="text">110**********1234</t-text>
+                </t-space>
+                <t-divider />
+                <t-space justify="space-between" align="center">
+                    <t-space align="center">
+                        <t-icon name="notification" theme="primary" />
+                        <t-text>消息通知</t-text>
+                    </t-space>
+                    <t-icon name="chevron-right" theme="default" />
+                </t-space>
+                <t-divider />
+                <t-space justify="space-between" align="center">
+                    <t-space align="center">
+                        <t-icon name="setting" theme="primary" />
+                        <t-text>设置</t-text>
+                    </t-space>
+                    <t-icon name="chevron-right" theme="default" />
+                </t-space>
+            </t-space>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <t-space justify="space-around">
+            <div class="nav-item">
+                <t-icon name="home" size="large" />
+                <t-text size="small">首页</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="cart" size="large" />
+                <t-text size="small">商城</t-text>
+            </div>
+            <div class="nav-item">
+                <t-icon name="service" size="large" />
+                <t-text size="small">服务</t-text>
+            </div>
+            <div class="nav-item active">
+                <t-icon name="user" size="large" />
+                <t-text size="small">我的</t-text>
+            </div>
+        </t-space>
+    </div>
+</body>
+</html> 
