@@ -5,14 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>优惠券</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
-        .phone-frame { width: 375px; height: 812px; background: white; border-radius: 40px; position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; font-size: 1.5em; color: #333; }
+        body {
+            background-color: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: white;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .status-bar {
+            height: 44px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        .capsule-button {
+            width: 87px;
+            height: 32px;
+            background: #f5f5f5;
+            border-radius: 16px;
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            z-index: 10;
+        }
+         .content-area {
+            padding: 16px;
+            padding-top: 60px; /* Space for status bar */
+            height: 100%;
+            overflow-y: auto;
+        }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="phone-frame">
-        <h1>优惠券页面</h1>
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:30</div>
+            <div class="icons flex gap-2">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+        
+        <!-- 胶囊按钮 -->
+        <div class="capsule-button"></div>
+
+        <!-- 主要内容区域 -->
+        <div class="content-area">
+            <h1 class="text-2xl font-bold mb-4">我的优惠券</h1>
+            
+            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl p-4 shadow-sm mb-4 text-white">
+                <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <h3 class="font-semibold text-lg">¥10 优惠券</h3>
+                        <p class="text-sm opacity-90">满100元可用</p>
+                    </div>
+                    <button class="bg-white text-yellow-600 text-sm font-semibold px-3 py-1 rounded-full">立即使用</button>
+                </div>
+                <p class="text-xs opacity-80">有效期至: 2024-12-31</p>
+            </div>
+
+             <div class="bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl p-4 shadow-sm mb-4 text-white">
+                <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <h3 class="font-semibold text-lg">免配送费券</h3>
+                        <p class="text-sm opacity-90">限燃气配送使用</p>
+                    </div>
+                    <button class="bg-white text-blue-600 text-sm font-semibold px-3 py-1 rounded-full">立即使用</button>
+                </div>
+                <p class="text-xs opacity-80">有效期至: 2024-11-15</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm mb-4 text-gray-600">
+                 <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <h3 class="font-semibold text-lg">¥5 优惠券</h3>
+                        <p class="text-sm">已过期</p>
+                    </div>
+                     <button class="bg-gray-200 text-gray-600 text-sm font-semibold px-3 py-1 rounded-full cursor-not-allowed">已过期</button>
+                </div>
+                <p class="text-xs">有效期至: 2023-09-30</p>
+            </div>
+        </div>
     </div>
 </body>
 </html> 
