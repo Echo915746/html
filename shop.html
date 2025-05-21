@@ -67,15 +67,15 @@
 
             <!-- 分类标签 -->
             <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
-                <button class="px-4 py-2 bg-green-500 text-white rounded-full text-sm whitespace-nowrap">燃气瓶</button>
-                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">配件</button>
-                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">安全设备</button>
+                <button class="category-button px-4 py-2 bg-green-500 text-white rounded-full text-sm whitespace-nowrap" data-category="gas_bottle">燃气瓶</button>
+                <button class="category-button px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap" data-category="accessories">配件</button>
+                <button class="category-button px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap" data-category="safety_equipment">安全设备</button>
             </div>
 
             <!-- 商品列表 -->
-            <div class="grid grid-cols-2 gap-4">
+            <div id="product-list" class="grid grid-cols-2 gap-4">
                 <!-- 商品卡片 1 -->
-                <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="product-card bg-white rounded-xl p-4 shadow-sm" data-category="gas_bottle">
                     <img src="https://picsum.photos/200/200" alt="5kg燃气瓶" class="w-full h-32 object-cover rounded-lg mb-2">
                     <h3 class="font-medium mb-1">5kg燃气瓶</h3>
                     <p class="text-red-500 font-bold mb-2">¥88.00</p>
@@ -83,7 +83,7 @@
                 </div>
 
                 <!-- 商品卡片 2 -->
-                <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="product-card bg-white rounded-xl p-4 shadow-sm" data-category="gas_bottle">
                     <img src="https://picsum.photos/200/201" alt="15kg燃气瓶" class="w-full h-32 object-cover rounded-lg mb-2">
                     <h3 class="font-medium mb-1">15kg燃气瓶</h3>
                     <p class="text-red-500 font-bold mb-2">¥168.00</p>
@@ -91,7 +91,7 @@
                 </div>
 
                 <!-- 商品卡片 3 -->
-                <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="product-card bg-white rounded-xl p-4 shadow-sm hidden" data-category="accessories">
                     <img src="https://picsum.photos/200/202" alt="减压阀" class="w-full h-32 object-cover rounded-lg mb-2">
                     <h3 class="font-medium mb-1">减压阀</h3>
                     <p class="text-red-500 font-bold mb-2">¥45.00</p>
@@ -99,7 +99,7 @@
                 </div>
 
                 <!-- 商品卡片 4 -->
-                <div class="bg-white rounded-xl p-4 shadow-sm">
+                <div class="product-card bg-white rounded-xl p-4 shadow-sm hidden" data-category="safety_equipment">
                     <img src="https://picsum.photos/200/203" alt="燃气报警器" class="w-full h-32 object-cover rounded-lg mb-2">
                     <h3 class="font-medium mb-1">燃气报警器</h3>
                     <p class="text-red-500 font-bold mb-2">¥128.00</p>
@@ -109,4 +109,35 @@
         </div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const categoryButtons = document.querySelectorAll('.category-button');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCategory = button.dataset.category;
+
+                // Remove active styles from all buttons
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('bg-green-500', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-gray-600');
+                });
+
+                // Add active styles to the clicked button
+                button.classList.remove('bg-gray-100', 'text-gray-600');
+                button.classList.add('bg-green-500', 'text-white');
+
+                // Show/hide product cards based on category
+                productCards.forEach(card => {
+                    if (card.dataset.category === selectedCategory) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    });
+</script>
 </html> 
