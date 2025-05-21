@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>燃气服务小程序</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: white;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .status-bar {
+            height: 44px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .capsule-button {
+            width: 87px;
+            height: 32px;
+            background: #f5f5f5;
+            border-radius: 16px;
+            position: absolute;
+            top: 6px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="phone-frame">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:30</div>
+            <div class="icons flex gap-2">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+        
+        <!-- 胶囊按钮 -->
+        <div class="capsule-button"></div>
+
+        <!-- 主要内容区域 -->
+        <div class="p-4 pt-16">
+            <!-- 气瓶余量进度条 -->
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 text-white mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm">气瓶余量</span>
+                    <span class="text-sm">75%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                    <div class="bg-white rounded-full h-2" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <!-- 燃气配送主按钮 -->
+            <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white mb-6 text-center">
+                <i class="fas fa-gas-pump text-4xl mb-2"></i>
+                <h2 class="text-xl font-bold">燃气配送</h2>
+            </div>
+
+            <!-- 次要功能入口 -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <i class="fas fa-book text-2xl text-blue-500 mb-2"></i>
+                    <p class="text-sm">燃气知识</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <i class="fas fa-shield-alt text-2xl text-green-500 mb-2"></i>
+                    <p class="text-sm">上门安检</p>
+                </div>
+            </div>
+
+            <!-- 应急按钮 -->
+            <div class="fixed bottom-6 right-6">
+                <button class="bg-red-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-phone-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
